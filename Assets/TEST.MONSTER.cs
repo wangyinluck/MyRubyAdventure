@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ public class TEST.MONSTER : MonoBehaviour
     void Start()
     {
         Debug.Log("I'm a boy");
+        
+        int a  = Int32.MaxValue;
+        ;
     }
 
     // Update is called once per frame
