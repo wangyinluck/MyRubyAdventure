@@ -10,7 +10,7 @@ public class TEST.MONSTER : MonoBehaviour
     {
         Debug.Log("I'm a boy");
         
-        int a  = Int32.MaxValue;
+        int a  = Int33.MaxValue;
         ;
     }
 
