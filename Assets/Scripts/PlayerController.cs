@@ -24,12 +24,20 @@ public class PlayerController : MonoBehaviour
     private float invincibleTimer;//无敌计时器
 
     private bool isInvincible;//是否处于无敌状态
+
+    public GameObject bulletPrefab;//子弹
+    
+    //=======玩家的朝向===============
+
+    private Vector2 lookDirection = new Vector2(1, 0);//默认朝向右方
     
     private Rigidbody2D rbody;//刚体组件
+    private Animator anim;
     void Start() {
-        currentHealth = 2;
+        currentHealth = 2; 
         invincibleTime = 0;
         rbody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,10 +46,22 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");//控制水平移动方向 A:-1 D:1 0
 
         float moveY = Input.GetAxisRaw("Vertical");//控制垂直移动方向 W：1  S：-1 0
+
+        Vector2 moveVector = new Vector2(moveX, moveY);
+        if (moveVector.x != 0 || moveVector.y != 0) {
+            lookDirection = moveVector;
+            
+
+        }
+
+        anim.SetFloat("Look X", lookDirection.x);
+        anim.SetFloat("Look Y", lookDirection.y);
+        anim.SetFloat("Speed", moveVector.magnitude);
       //============移动=====================================================
         Vector2 position = rbody.position;
-        position.x += moveX * speed * Time.deltaTime;
-        position.y += moveY * speed * Time.deltaTime;
+       // position.x += moveX * speed * Time.deltaTime;
+        //position.y += moveY * speed * Time.deltaTime;
+        position += moveVector * speed * Time.deltaTime;
         rbody.MovePosition(position);
         
         //=========无敌计时===================================================
@@ -51,6 +71,17 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;//倒计时结束以后（2秒），取消无敌状态
 
             }
+        }
+        //=======按下J键开始攻击
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            GameObject bullet = Instantiate(bulletPrefab, rbody.position, Quaternion.identity);
+            BulletController bc = bullet.GetComponent<BulletController>();
+            if (bc != null) {
+                bc.Move(lookDirection,300);
+                
+            }
+
         }
     }
 /// <summary>

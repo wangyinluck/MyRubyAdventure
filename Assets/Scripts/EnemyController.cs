@@ -49,6 +49,8 @@ public class EnemyController : MonoBehaviour
         rbody .MovePosition(position );
         anim.SetFloat("moveX",moveDirection.x);
         anim.SetFloat("moveY",moveDirection.y);
+        
+        
     }
     /// <summary>
     /// 与玩家的碰撞检测
