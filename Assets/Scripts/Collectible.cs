@@ -6,7 +6,11 @@ using UnityEngine;
 /// <summary>
 /// 草莓被玩家碰撞时检测的相关类
 /// </summary>
-public class Collectible: MonoBehaviour {
+public class Collectible: MonoBehaviour
+{
+
+    public ParticleSystem collecteffect;//拾取特效
+    
     // Start is called before the first frame update
     void Start() {
         
@@ -29,6 +33,9 @@ public class Collectible: MonoBehaviour {
         {
             if (pc.MyCurrentHealth < pc.MyMaxHealth) {
              pc .ChangeHealth(1);
+
+             Instantiate(collecteffect , transform.position, Quaternion.identity);//生成特效
+             
              Destroy(this.gameObject);
             }
            

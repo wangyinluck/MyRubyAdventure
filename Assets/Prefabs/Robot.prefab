@@ -153,6 +153,7 @@ MonoBehaviour:
   speed: 7
   changeDirectionTime: 2
   isVertical: 1
+  brokenEffect: {fileID: 2152919138242392050}
 --- !u!95 &1429358969
 Animator:
   serializedVersion: 3
@@ -254,6 +255,12 @@ PrefabInstance:
 --- !u!4 &2152919138242392051 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9174357451230183631, guid: b78905176280946dd9c863a9ee90db75,
+    type: 3}
+  m_PrefabInstance: {fileID: 7111581778088521532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2152919138242392050 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9174357451230183630, guid: b78905176280946dd9c863a9ee90db75,
     type: 3}
   m_PrefabInstance: {fileID: 7111581778088521532}
   m_PrefabAsset: {fileID: 0}
