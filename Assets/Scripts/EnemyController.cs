@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 /// <summary>
 /// 敌人控制相关
@@ -64,7 +65,14 @@ public class EnemyController : MonoBehaviour
             pc.ChangeHealth(-1);
             
         }
+        
+
 
     }
+    /// <summary>
+    /// 敌人被修复
+    /// </summary>
+    public void Fixsd() 
+    
 }
 
