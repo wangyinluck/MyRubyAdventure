@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
 
     private Vector2 moveDirection;//移动方向
 
+    public ParticleSystem brokenEffect;//损坏特效
+
     private bool isFixed;//是否被修复了
     
     private Rigidbody2D rbody;
@@ -81,6 +83,9 @@ public class EnemyController : MonoBehaviour
     public void Fixsd()
     {
         isFixed = true;
+        if (brokenEffect.isPlaying == true) {
+            brokenEffect.Stop();
+        }
         rbody.simulated = false;//禁用物理
         anim.SetTrigger("ffix");//播放被修复的动画
 
