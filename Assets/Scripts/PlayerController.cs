@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         invincibleTime = 0;
         rbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        UImanager.instance.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         isInvincible = true;
+        anim.SetTrigger("Hit");
         invincibleTimer = invincibleTime;
     }
     
