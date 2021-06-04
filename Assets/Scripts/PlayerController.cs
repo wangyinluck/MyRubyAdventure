@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
     
     //把玩家的生命值约束在0和最大值之间
      currentHealth = Mathf.Clamp(currentHealth + amount,0,maxHealth);
-     
+     UImanager.instance.UpdateHealthBar(currentHealth, maxHealth);//更新血条
      Debug.Log(currentHealth +"/"+maxHealth);
     }
 }
