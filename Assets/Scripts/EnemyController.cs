@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     private float changeTimer;//改变方向的计时器
 
     private Vector2 moveDirection;//移动方向
+
+    private bool isFixed;//是否被修复了
     
     private Rigidbody2D rbody;
 
@@ -32,11 +34,14 @@ public class EnemyController : MonoBehaviour
         moveDirection = isVertical ? Vector2.up : Vector2.right;//如果是垂直移动，方向就朝上；否则方向朝右
 
         changeTimer = changeDirectionTime;
+
+        isFixed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isFixed) return;//如果被修复了，就不执行以下所有的代码
         changeTimer -= Time.deltaTime;
         if (changeTimer < 0)
         {
@@ -69,10 +74,17 @@ public class EnemyController : MonoBehaviour
 
 
     }
+
     /// <summary>
     /// 敌人被修复
     /// </summary>
-    public void Fixsd() 
+    public void Fixsd()
+    {
+        isFixed = true;
+        rbody.simulated = false;//禁用物理
+        anim.SetTrigger("ffix");//播放被修复的动画
+
+    } 
     
 }
 

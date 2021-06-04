@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
         //=======按下J键开始攻击
         if (Input.GetKeyDown(KeyCode.J))
         {
-            GameObject bullet = Instantiate(bulletPrefab, rbody.position, Quaternion.identity);
+            anim.SetTrigger("Launch");//播放攻击动画
+            GameObject bullet = Instantiate(bulletPrefab, rbody.position+Vector2.up*0.5f , Quaternion.identity);
             BulletController bc = bullet.GetComponent<BulletController>();
             if (bc != null) {
                 bc.Move(lookDirection,300);

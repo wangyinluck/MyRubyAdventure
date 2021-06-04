@@ -33,7 +33,9 @@ public class BulletController: MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other)
     {
        EnemyController  ec = other.gameObject.GetComponent<EnemyController >();
-       if (ec != null) {
+       if (ec != null)
+       {
+           ec.Fixsd();//修复敌人
            Debug .Log("碰到敌人了");
            
        }
