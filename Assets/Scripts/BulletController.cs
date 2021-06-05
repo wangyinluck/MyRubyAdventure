@@ -42,6 +42,8 @@ public class BulletController: MonoBehaviour {
            
        }
 
+       AudioManager.instance.AudioPlay(hitClip);//播放命中音效
+
         Destroy(this.gameObject);
 
     }

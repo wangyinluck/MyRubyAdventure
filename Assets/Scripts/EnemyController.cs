@@ -20,6 +20,8 @@ public class EnemyController : MonoBehaviour
 
     public ParticleSystem brokenEffect;//损坏特效
 
+    public AudioClip fixedClip;//被修复的音效
+    
     private bool isFixed;//是否被修复了
     
     private Rigidbody2D rbody;
@@ -86,6 +88,8 @@ public class EnemyController : MonoBehaviour
         if (brokenEffect.isPlaying == true) {
             brokenEffect.Stop();
         }
+
+        AudioManager.instance.AudioPlay(fixedClip);//播放被修复的音效
         rbody.simulated = false;//禁用物理
         anim.SetTrigger("ffix");//播放被修复的动画
 
