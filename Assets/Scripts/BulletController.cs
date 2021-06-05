@@ -9,6 +9,8 @@ using UnityEngine;
 public class BulletController: MonoBehaviour {
     
      Rigidbody2D rbody;
+
+     public AudioClip hitClip;//命中音效
     
     void Awake() {
         rbody = GetComponent<Rigidbody2D>();

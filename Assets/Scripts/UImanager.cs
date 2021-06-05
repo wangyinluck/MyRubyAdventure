@@ -10,7 +10,7 @@ public class UImanager : MonoBehaviour {
    //单列模式
    public static UImanager instance { get; private set; }
 
-   void Start()
+   void Awake()
    {
       instance = this;
 

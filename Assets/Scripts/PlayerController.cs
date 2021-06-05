@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 /// <summary>
 /// 控制角色移动.生命.动画等
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private bool isInvincible;//是否处于无敌状态
 
     public GameObject bulletPrefab;//子弹
+    //========玩家的音效
+    public AudioClip hitClip;//受伤音效
+    public AudioClip launchClip;//发射齿轮音效
+    
     
     //=======玩家的朝向===============
 
@@ -77,6 +82,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             anim.SetTrigger("Launch");//播放攻击动画
+
+            AudioManager.instance.AudioPlay(launchClip);//播放攻击音效
+                
             GameObject bullet = Instantiate(bulletPrefab, rbody.position+Vector2.up*0.5f , Quaternion.identity);
             BulletController bc = bullet.GetComponent<BulletController>();
             if (bc != null) {
@@ -98,6 +106,8 @@ public class PlayerController : MonoBehaviour
         }
         isInvincible = true;
         anim.SetTrigger("Hit");
+        AudioManager .instance .AudioPlay(hitClip);//播放受伤音效
+        
         invincibleTimer = invincibleTime;
     }
     

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using JetBrains.Annotations;
 using UnityEngine;
 /// <summary>
 /// 草莓被玩家碰撞时检测的相关类
@@ -10,6 +11,8 @@ public class Collectible: MonoBehaviour
 {
 
     public ParticleSystem collecteffect;//拾取特效
+
+    [CanBeNull] public AudioClip CollectClip;//拾取音效
     
     // Start is called before the first frame update
     void Start() {
@@ -35,7 +38,7 @@ public class Collectible: MonoBehaviour
              pc .ChangeHealth(1);
 
              Instantiate(collecteffect , transform.position, Quaternion.identity);//生成特效
-             
+             AudioManager.instance .AudioPlay(CollectClip);//播放音效
              Destroy(this.gameObject);
             }
            

@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collecteffect: {fileID: 9036864863645386155, guid: 0ab179013efd34760a41ecb7c66d24fc,
     type: 3}
+  CollectClip: {fileID: 8300000, guid: af5f8b64e3f58f24c87ff8f789b04f6c, type: 3}
 --- !u!95 &4260684361551886481
 Animator:
   serializedVersion: 3
